@@ -3,7 +3,6 @@ package umc.example.carrot.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import umc.example.carrot.entity.Post;
-import umc.example.carrot.entity.User;
 import umc.example.carrot.repository.PostRepository;
 
 import javax.transaction.Transactional;
@@ -38,10 +37,14 @@ public class PostService {
         return post.getId();
     }
 
+
+
     public void deletePost(Long id) {   // 게시글 삭제    
         Post post = getPostById(id);
         postRepository.delete(post);
     }
+
+
 
 
     // 필요한 다른 메소드들을 추가로 구현할 수 있습니다.

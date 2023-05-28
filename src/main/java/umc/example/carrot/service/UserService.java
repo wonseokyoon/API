@@ -30,6 +30,8 @@ public class UserService {
     }
 
 
+
+
     @Transactional
     public Long save(User user) {
         return userRepository.save(user).getId();
@@ -46,5 +48,18 @@ public class UserService {
     public void delete(Long id) {
         User user = findById(id);
         userRepository.delete(user);
+    }
+
+
+    public User findUserByName(String userName) {
+
+        User user = userRepository.findUserByName(userName);
+
+        // 사용자를 찾지 못한 경우에 대한 예외 처리
+        if (user == null) {
+            throw new IllegalArgumentException("User not found");
+        }
+
+        return user;
     }
 }

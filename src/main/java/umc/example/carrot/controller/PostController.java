@@ -1,9 +1,11 @@
 package umc.example.carrot.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import umc.example.carrot.entity.Post;
+import umc.example.carrot.service.CategoryService;
 import umc.example.carrot.service.PostService;
 
 import java.util.List;
@@ -15,11 +17,15 @@ public class PostController {
 
     private final PostService postService;
 
+    @Autowired
+    private CategoryService categoryService;
+
     @PostMapping("")
     public ResponseEntity<Long> createPost(@RequestBody Post post) {    //게시글 작성
         Long postId = postService.createPost(post);
         return ResponseEntity.ok(postId);
     }
+
 
     @GetMapping("")
     public ResponseEntity<List<Post>> getAllPosts() {       //모든 게시물 보기
@@ -38,6 +44,7 @@ public class PostController {
         Long postId = postService.updatePost(id, updatedPost);
         return ResponseEntity.ok(postId);
     }
+
 
     @DeleteMapping("/{id}")     //게시글 삭제
     public ResponseEntity<Void> deletePost(@PathVariable Long id) {

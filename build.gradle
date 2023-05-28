@@ -29,6 +29,12 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+	implementation 'org.springframework.boot:spring-boot-starter-validation'	//valid에 대한 의존성
+	implementation 'org.springframework.boot:spring-boot-starter-validation'	//min에 대한 의존성
+
+
+
+
 }
 
 tasks.named('test') {
